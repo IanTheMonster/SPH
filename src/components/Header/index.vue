@@ -1,4 +1,6 @@
 <script>
+import _ from 'lodash'
+
 export default {
   name: 'Header',
   data() {
@@ -8,15 +10,19 @@ export default {
   },
   methods: {
     goSearch() {
-      this.$router.push({
+
+      let location = {
         name: 'search',
-        params:{
+        params: {
           q: this.searchValue,
         },
-        query:{
-          b: this.searchValue.toUpperCase(),
-        }
-      })
+        query: {}
+      };
+      if (this.$route.query != null) {
+        location.query  = _.cloneDeep(this.$route.query)
+      }
+      location.query.b = this.searchValue
+      this.$router.push(location)
     }
   }
 }
@@ -50,9 +56,9 @@ export default {
     <!--头部第二行 搜索区域-->
     <div class="bottom">
       <h1 class="logoArea">
-        <a class="logo" title="尚品汇" href="###" target="_blank">
+        <router-link to="/home" class="logo" title="尚品汇" href="">
           <img src="./images/logo.png" alt="">
-        </a>
+        </router-link>
       </h1>
       <div class="searchArea">
         <form action="###" class="searchForm">

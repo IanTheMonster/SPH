@@ -1,11 +1,13 @@
 <script>
 export default {
-  name: ""
+  name: "Search",
 }
 </script>
 
 <template>
-<div>4个div</div>
+<div>
+  <TypeNav></TypeNav>
+</div>
 </template>
 
 <style scoped>
